@@ -1,0 +1,370 @@
+﻿@{
+	ViewBag.Title = "全宗管理";
+	Layout = null;
+}
+<script src="@Url.Content("~/Scripts/JqueryEasyUI/plugins/jquery.validatebox.js")"></script>
+<script>
+    /**加载数据**/
+	$(function () {
+		/**全宗信息加载**/
+    	$('#qzxx_dg').datagrid({
+			  fit:true,
+			  method: 'get',
+			  fitColumns: true,
+			  singleSelect: true,
+			  striped: true,
+			  nowrap: true,
+			  border:false,
+			  url: '/ArchiveManage/LoadFonds/',
+			  loadMsg: '正在努力加载中...',
+			  pagination: false,
+			  rownumbers: true,
+			  pageSize: 10,
+			  pageList: [10, 20, 30],
+			  toolbar:'#quanzhong1_tb',
+			  onClickRow:function(index,row){
+			  	  $('#mlxx_dg').datagrid({ url: '/ArchiveManage/GetQZInfo' });
+				  }
+		});
+    	$('#mlxx_dg').datagrid({
+    		  fit: true,
+			  method: 'get',
+			  fitColumns: true,
+			  singleSelect: true,
+			  striped: true,
+			  nowrap: true,
+			  border:false,
+			  loadMsg: '正在努力加载中...',
+			  pagination: false,
+			  rownumbers: true,
+			  pageSize: 10,
+			  pageList: [10, 20, 30],
+			  toolbar:'#quanzhong2_tb',
+			  onClickRow:function(index,row){
+			  	$('#damlxx_dg').datagrid({ url: '/ArchiveManage/LoadClassInfo' });
+			  }
+    	});
+		/**分类信息**/
+    	$('#damlxx_dg').datagrid({
+    		  fit: true,
+			  method: 'get',
+			  fitColumns: true,
+			  singleSelect: true,
+			  striped: true,
+			  nowrap: true,
+			  border:false,
+			  loadMsg: '正在努力加载中...',
+			  pagination: false,
+			  rownumbers: true,
+			  pageSize: 10,
+			  pageList: [10, 20, 30],
+			  toolbar:'#quanzhong3_tb',
+    	});
+    });
+	/**全宗添加、修改、删除操作**/
+	function QuanZhongControl(e) {
+		if (e == 1) {/**添加**/
+			$('#QuanZhongForm').dialog('open').dialog('setTitle', '新增');
+			$('#bnt_sumbit_quanzhong').click(function () {
+				if (!$("#quanzhong_form").form('validate')) {
+					return false;
+				}
+				var qz_name = $("#txt_qz_name").val();
+				var qz_code = $("#txt_qz_code").val();
+				var qz_order = $("#txt_qz_order").numberspinner('getValue');
+				var qz_father = $("#txt_qz_father").combobox('getValue');
+				var qz_level = $("#txt_qz_level").numberspinner('getValue');
+				var qz_jgh = $("#txt_qz_JGH").val();
+				var qz_jgmlh = $("#txt_qz_JGMLH").val();
+				var qz_remark = $("#txt_qz_remark").val();
+				$.post("/ArchiveManage/QZInfoManage/", { _type: 1, _name: qz_name, _code: qz_code, _order: qz_order, _father: qz_father, _level: qz_level, _jgh: qz_jgh, _jgmlh: qz_jgmlh, _remark: qz_remark }).done(function (data) {
+					if (data[0] == '1') {
+						$('#qzxx_dg').datagrid('load', { code: '01' });
+						$('#QuanZhongForm').dialog('close');
+					}
+					else {
+						$('#qzxx_dg').datagrid('load', { code: '01' });
+						$('#QuanZhongForm').dialog('close');
+					}
+				});
+			});
+		}
+		else if (e == 2) {/**修改**/
+			var s = $("#qzxx_dg").datagrid("getSelected");
+			if (s) {
+				var selectid = s.Id;
+				$.messager.confirm('是否修改', '确定要修改吗', function (r) {
+					$('#QuanZhongForm').dialog('open').dialog('setTitle', '修改');
+				});
+			} else {
+				msg("请选择");
+				return false;
+			}
+		}
+		else if (e == 3) {/**删除**/
+			var s = $("#qzxx_dg").datagrid("getSelected");
+			if (s) {
+				var selectid = s.Id;
+				$.messager.confirm('是否删除', '确定要删除吗?', function (r) {
+					if (r) {
+						$.post("/ArchiveManage/QZInfoManage/", { _type: 3, _selectid: selectid }).done(function (data) {
+							if (data[0] == '1') {
+								$('#qzxx_dg').datagrid('load', { code: '01' });
+							}
+							else {
+								$('#qzxx_dg').datagrid('load', { code: '01' });
+
+							}
+						});
+					}
+				});
+			} else {
+				alert("请选择");
+				return false;
+			}
+		}
+		else if (e == 4) {/**关闭**/
+			$('#QuanZhongForm').dialog('close');
+		}
+	}
+	/**分类信息添加、修改、删除操作**/
+	function ClassControl(e) {
+		if (e == 1) {/**新增**/
+			$('#TClassForm').dialog('open').dialog('setTitle', '新增');
+			$('#bnt_sumbit_tclass').click(function () {
+				if (!$("#tclass_form").form('validate')) {
+					return false;
+				}
+				var cl_name = $("#txt_cl_name").val();
+				var cl_code = $("#txt_cl_code").val();
+				var cl_order = $("#txt_cl_order").numberspinner('getValue');
+				$.post("/ArchiveManage/ClassInfoManage/", { _type: 1, _name: cl_name, _code: cl_code, _order: cl_order }).done(function (data) {
+					if (data[0] == '1') {
+						$('#damlxx_dg').datagrid('load', { code: '01' });
+						$('#TClassForm').dialog('close');
+					}
+					else {
+						$('#damlxx_dg').datagrid('load', { code: '01' });
+						$('#TClassForm').dialog('close');
+					}
+				});
+			});
+		}
+		else if (e == 2) {/**修改**/
+			var s = $("#damlxx_dg").datagrid("getSelected");
+			if (s) {
+				var selectid = s.Id;
+				$.messager.confirm('是否修改', '确定要修改吗', function (r) {
+					$('#TClassForm').dialog('open').dialog('setTitle', '修改');
+				});
+			} else {
+				msg("请选择");
+				return false;
+			}
+		}
+		else if (e == 3) {/**删除**/
+			var s = $("#damlxx_dg").datagrid("getSelected");
+			if (s) {
+				var selectid = s.Id;
+				$.messager.confirm('是否删除', '确定要删除吗?', function (r) {
+					if (r) {
+						$.post("/ArchiveManage/ClassInfoManage/", { _type: 3, _selectid: selectid }).done(function (data) {
+							if (data[0] == '1') {
+								$('#damlxx_dg').datagrid('load', { code: '01' });
+							}
+							else {
+								$('#damlxx_dg').datagrid('load', { code: '01' });
+
+							}
+						});
+					}
+				});
+			} else {
+				alert("请选择");
+				return false;
+			}
+		}
+		else if (e == 4) {/**关闭**/
+			$('#TClassForm').dialog('close');
+		}
+	}
+</script>	
+
+<!--显示区域-easyui-layout -->
+<div class="easyui-layout" style="width:100%;height:100%;">
+	<div data-options="region:'west',split:true" title="全宗信息维护" style="width:220px;">
+		<table class="easyui-datagrid" id="qzxx_dg">
+			<thead>
+				<tr>
+					<th data-options="field:'Id',hidden:true" width="1"></th>
+					<th data-options="field:'FondName'" width="200">全宗信息</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<!--分类管理-->
+	<div data-options="region:'east',split:true" title="门类归档方式" style="width:490px;">
+		<table class="easyui-datagrid" id="damlxx_dg">
+			<thead>
+				<tr>
+					<th data-options="field:'Id'">顺序号</th>
+					<th data-options="field:'ClassCode'">门类代码</th>
+					<th data-options="field:'ClassName'">门类名称</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div data-options="region:'center',title:'档案门类映射'">
+		<table class="easyui-datagrid" id="mlxx_dg">
+			<thead>
+				<tr>
+					<th data-options="field:'Id'">顺序号</th>
+					<th data-options="field:'MCode'">门类代码</th>
+					<th data-options="field:'MName'">门类名称</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+<!--导航菜单-->
+<div id="quanzhong1_tb" style="padding: 5px; height: auto; vertical-align: bottom;">
+	<div>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="QuanZhongControl(1)">添加</a>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="QuanZhongControl(2)">修改</a>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="QuanZhongControl(3)">删除</a>
+	</div>
+</div>
+<div id="quanzhong2_tb" style="padding: 5px; height: auto; vertical-align: bottom;">
+	<div>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="QuanZhongControl(1)">关联</a>
+	</div>
+</div>
+<div id="quanzhong3_tb" style="padding: 5px; height: auto; vertical-align: bottom;">
+	<div>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="ClassControl(1)">添加</a>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="ClassControl(2)">修改</a>
+		<a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="ClassControl(3)">删除</a>
+	</div>
+</div>
+
+<!--全宗表单-->
+<div style="display: none;">
+	<div id="QuanZhongForm" class="easyui-dialog" style="width: 700px; height:400px; padding: 10px 10px 10px 10px" closed="true" closable="false" buttons="#QuanZhongForm_Button" modal="true">
+			<form id="quanzhong_form">
+				<table id="tblAdd" class="view">
+					<tr>
+						<th>
+							<label for="txt_qz_name">全宗名称：</label>
+						</th>
+						<td>
+							<input class="easyui-validatebox" type="text" id="txt_qz_name" maxlength="50" data-options="required:true,missingMessage:'全宗名称不能为空'" />
+						</td>
+						<th>
+							<label for="txt_qz_code">全宗代码：</label>
+						</th>
+						<td>
+							<input type="text" id="txt_qz_code" maxlength="50" data-options="missingMessage:'全宗名称简写'" />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="txt_qz_order">顺序号：</label>
+						</th>
+						<td>
+							<input class="easyui-numberspinner" id="txt_qz_order" value="0" style="width:230px;"/>
+						</td>
+
+						<th>
+							<label for="txt_qz_father">父级全宗：</label>
+						</th>
+						<td>
+							<input id="txt_qz_father" class="easyui-combobox" style="width:200px;" data-options="missingMessage:''" />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="txt_qz_level">全宗级别</label>
+						</th>
+						<td>
+							<input class="easyui-numberspinner" id="txt_qz_level" value="0" style="width:200px;" />
+						</td>
+
+						<th>
+							<label for="txt_qz_JGH">进馆号</label>
+						</th>
+						<td>
+							<input type="text" id="txt_qz_JGH" />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="txt_qz_JGMLH">进馆目录号：</label>
+						</th>
+						<td>
+							<input class="easyui-validatebox" type="text" id="txt_qz_JGMLH" />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="txt_qz_remark">备注：</label>
+						</th>
+						<td>
+							<input class="easyui-validatebox" type="text" id="txt_qz_remark" />
+						</td>
+					</tr>
+				</table>
+				<div id="QuanZhongForm_Button">
+		<a href="javascript:void(0)" id="bnt_sumbit_quanzhong" class="easyui-linkbutton" iconcls="icon-ok">确认</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="QuanZhongControl(4)">取消</a>
+				</div>
+			</form>
+	</div>
+</div>
+
+<!--分类表单-->
+<div style="display: none;">
+	<div id="TClassForm" class="easyui-dialog" style="width: 700px; height:400px; padding: 10px 10px 10px 10px" closed="true" closable="false" buttons="#TClassForm_Button" modal="true">
+		<form id="tclass_form">
+			<table id="tblAdd" class="view">
+				<tr>
+					<th>
+						<label for="txt_cl_name">归档方式名称：</label>
+					</th>
+					<td>
+						<input class="easyui-validatebox" type="text" id="txt_cl_name" maxlength="50" data-options="required:true,missingMessage:'归档方式名称'" />
+					</td>
+					<th>
+						<label for="txt_cl_code">归档方式代码：</label>
+					</th>
+					<td>
+						<input type="text" id="txt_cl_code" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_cl_order">顺序号：</label>
+					</th>
+					<td>
+						<input class="easyui-numberspinner" id="txt_cl_order" value="0" style="width:200px;" />
+					</td>
+
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_cl_config">卷内导入配置</label>
+					</th>
+					<td>
+						<input type="text" id="txt_cl_config" />
+					</td>
+				</tr>
+			</table>
+			<div id="TClassForm_Button">
+				<a href="javascript:void(0)" id="bnt_sumbit_tclass" class="easyui-linkbutton" iconcls="icon-ok">确认</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="ClassControl(4)">取消</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+

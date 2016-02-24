@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MvcEasyUI160128.Models.Fonds>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Father)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Order)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_JGH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_JGMLH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fonds_Remark)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Father)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_JGH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_JGMLH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fonds_Remark)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Fonds_ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Fonds_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Fonds_ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

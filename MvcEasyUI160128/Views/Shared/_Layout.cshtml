@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE =Edge,chrome =1"/>
+    @Styles.Render("~/Content/css")
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Scripts/JqueryEasyUI/themes/default/easyui.css")">
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Scripts/JqueryEasyUI/themes/icon.css")">
+	@RenderSection("css",required:false)
+</head>
+<body class="easyui-layout">
+    @RenderBody()
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	<script src="@Url.Content("~/Scripts/JqueryEasyUI/jquery.easyui.min.js")"></script>
+	@RenderSection("scripts", required: false)
+</body>
+</html>

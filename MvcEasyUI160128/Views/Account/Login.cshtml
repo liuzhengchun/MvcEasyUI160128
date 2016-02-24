@@ -1,0 +1,165 @@
+﻿@using MvcEasyUI160128.Models
+@model LoginViewModel
+@{
+	Layout = null;
+	ViewBag.Title = "登录";
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="renderer" content="webkit" />
+	<meta http-equiv="X-UA-Compatible" content="IE =Edge,chrome =1" />
+	@Styles.Render("~/Content/css")
+	<style>
+.loginbox{
+	margin-top:50px;
+}
+.forgot-password{
+	float:right; 
+	font-size: 80%; 
+	position: relative; 
+	top:-10px;
+}
+.panel-pad{
+	padding-top:30px;
+}
+.login-alert{
+	display:none;
+}
+.margT25{
+	margin-bottom: 25px;
+}
+.margT10{
+	margin-top:10px;
+}
+.margL10{
+	padding-left: 25px;
+}
+.no-acc{
+	border-top: 1px solid#888; padding-top:15px; font-size:85%;
+}
+.signup-box{
+	display:none; margin-top:50px;
+}
+.signup-fb{
+	border-top: 1px solid #999; padding-top:20px;
+}
+.signin{
+	float:right; font-size: 85%; position: relative; top:-10px;
+}
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.open > .dropdown-toggle.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+.btn-google {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+.btn-google:hover,
+.btn-google:focus,
+.btn-google:active,
+.btn-google.active,
+.open > .dropdown-toggle.btn-google {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+.btn-twitter {
+  color: #fff;
+  background-color: #00aced;
+  border-color: #00aced;
+}
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active,
+.btn-twitter.active,
+.open > .dropdown-toggle.btn-twitter {
+  color: #fff;
+  background-color: #00aced;
+  border-color: #00aced;
+}
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
+  height:47px;
+		}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div id="loginbox" class="mainbox col-md-offset-3 col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">档案系统登录</div>
+				</div>
+				<div class="panel-body panel-pad">
+					<div id="login-alert" class="alert alert-danger login-alert"></div>
+					<section id="loginform">
+						@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.returnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+						{
+							@Html.AntiForgeryToken()
+							<br />
+							<div class="col-md-offset-2 col-md-8" style="padding-left: 28px;">
+							     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+								 @*@Html.ValidationMessageFor(m => m.Email, "email 1111", new { @class = "text-danger" })
+								 @Html.ValidationMessageFor(m => m.Password, "Pass 2222", new { @class = "text-danger" })*@
+							</div>
+							<div class="input-group input-group-lg margT25 col-md-offset-2">
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-user"></i>
+								</span>
+								@Html.TextBoxFor(m => m.Email, new { @class = "form-control", value = "20162016@qq.com" })
+								@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+							</div>
+							<div class="input-group input-group-lg margT25 col-md-offset-2">
+								<span class="input-group-addon">
+								    <i class="glyphicon glyphicon-lock"></i>
+								</span>
+								@Html.PasswordFor(m => m.Password, new { @class = "form-control", value = "@Dmin123" })
+								@*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-3 col-md-3">
+									<div class="checkbox">
+										@Html.CheckBoxFor(m => m.RememberMe)
+										@Html.LabelFor(m => m.RememberMe)
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-offset-2 col-md-8" style="padding-left: 28px;">
+								<input type="submit" value="登录" class="btn btn-block btn-lg btn-success" />
+							</div>
+							<br/><br /><br />
+							<div class="col-md-offset-2 col-md-8">
+								<div class="col-md-10">
+									<p>
+										账号：20162016@qq.com<br />
+										密码：@@Dmin123
+									</p>
+								</div>
+							</div>
+            }
+					</section>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

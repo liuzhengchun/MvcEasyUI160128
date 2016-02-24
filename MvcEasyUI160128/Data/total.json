@@ -1,0 +1,8 @@
+[{
+	"id":31,   
+	"text":"案卷分类",   
+	"iconCls":"icon-custom-statistics", 
+	"attributes":{   
+					"url":"/ArchiveManage/ArchiveCount"
+				 }
+}]

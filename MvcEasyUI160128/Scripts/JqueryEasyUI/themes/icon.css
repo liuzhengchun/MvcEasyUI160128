@@ -1,0 +1,500 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+.icon-custom-lock{
+	background:url('icons/icon_lock_alt.png') no-repeat center center;
+}
+.icon-custom-home
+{
+    background:url('icons/custom/home.png') no-repeat center center;
+}
+.icon-custom-infoset
+{
+    background:url('icons/custom/archives.png') no-repeat center center;
+}
+.icon-custom-img
+{
+    background:url('icons/custom/photography.png') no-repeat center center;
+}
+.icon-custom-abount
+{
+    background:url('icons/custom/premium.png') no-repeat center center;
+}
+/**企业信息**/
+.icon-custom-companyinfo
+{
+    background:url('icons/custom/graphic-design.png') no-repeat center center;
+}
+.icon-custom-dynamic
+{
+    background:url('icons/custom/full-time.png') no-repeat center center;
+}
+.icon-custom-linkme
+{
+    background:url('icons/custom/comment.png') no-repeat center center;
+}
+.icon-custom-systemset
+{
+    background:url('icons/custom/settings.png') no-repeat center center;
+}
+.icon-custom-logo
+{
+    background:url('icons/custom/limited-edition.png') no-repeat center center;
+}
+.icon-custom-showimage
+{
+    background:url('icons/custom/photography.png') no-repeat center center;
+}
+/**防伪查询icon**/
+.icon-custom-querycode
+{
+    background:url('icons/custom/zoom.png') no-repeat center center;
+}
+/**更改密码**/
+.icon-custom-password
+{
+    background:url('icons/custom/paypal.png') no-repeat center center;
+}
+/**关于我们**/
+.icon-custom-abountus
+{
+    background:url('icons/custom/my-account.png') no-repeat center center;
+}
+/**bnt-ok**/
+.icon-custom-bnt-sumbit
+{
+    background:url('icons/custom/check.png') no-repeat center center;
+}
+/**upload**/
+.icon-custom-upload
+{
+    background:url('icons/custom/custom-upload.png') no-repeat center center;
+}
+.icon-custom-addfunction
+{
+    background:url('icons/custom/Additionalfunction.png') no-repeat center center;
+}
+
+/**图片预览**/
+.icon-custom-preview
+{
+    background:url('icons/custom/custom-preview.png') no-repeat center center;
+}
+.icon-custom-voicemanage
+{
+    background:url('icons/custom/voice.png') no-repeat center center;
+}
+/**product**/
+.icon-custom-product
+{
+    background:url('icons/custom/product-1.png') no-repeat center center;
+}
+/**upload-images**/
+.icon-custom-upload-image
+{
+    background:url('icons/custom/uploadimage.png') no-repeat center center;
+}
+/**数码分配**/
+.icon-custom-barcodesplit
+{
+    background:url('icons/custom/delicious.png') no-repeat center center;
+}
+/**信息发布**/
+.icon-custom-News
+{
+    background:url('icons/custom/administrative-docs.png') no-repeat center center;
+}
+/**电子名片**/
+.icon-custom-qr
+{
+    background:url('icons/custom/qr.png') no-repeat center center;
+}
+.icon-custom-config
+{
+    background:url('icons/custom/config.png') no-repeat center center;
+}
+/**skin**/
+.icon-custom-skin
+{
+    background:url('icons/custom/skin.png') no-repeat center center;
+}
+/****/
+.icon-custom-chat
+{
+    background:url('icons/custom/chat.png') no-repeat center center;
+}
+/**view_chat.png**/
+.icon-custom-view_chat
+{
+    background:url('icons/custom/view_chat.png') no-repeat center center;
+}
+.icon-custom-cv
+{
+    background:url('icons/custom/cv.png') no-repeat center center;
+}
+/**quit**/
+.icon-custom-exitsys
+{
+    background:url('icons/custom/sign-out.png') no-repeat center center;
+}
+/**更改密码**/
+.icon-custom-alterpwd
+{
+    background:url('icons/custom/lock.png') no-repeat center center;
+}
+/**客户信息**/
+.icon-custom-customers
+{
+    background:url('icons/custom/customers.png') no-repeat center center;
+}
+/**订单信息**/
+.icon-custom-orderinfo
+{
+    background:url('icons/custom/order-1.png') no-repeat center center;
+}
+/**订单列表**/
+.icon-custom-orderlist
+{
+    background:url('icons/custom/order.png') no-repeat center center;
+}
+/**用户**/
+.icon-custom-user
+{
+    background:url('icons/custom/user.png') no-repeat center center;
+}
+/**关于我们**/
+.icon-custom-aboutus
+{
+    background:url('icons/custom/brainstorming.png') no-repeat center center;
+}
+/**系统设置**/
+.icon-custom-setsystem
+{
+    background:url('icons/custom/settings.png') no-repeat center center;
+}
+/**帐号管理**/
+.icon-custom-person
+{
+    background:url('icons/custom/suppliers.png') no-repeat center center;
+}
+/**登录日志**/
+.icon-custom-loginrecord
+{
+    background:url('icons/custom/future-projects.png') no-repeat center center;
+}
+/**查询记录**/
+.icon-custom-queryrecord
+{
+    background:url('icons/custom/date.png') no-repeat center center;
+}
+.icon-custom-statistics
+{
+    background:url('icons/custom/statistics.png') no-repeat center center;
+}
+/**下载采集器文件**/
+.icon-custom-down_db
+{
+    background:url('icons/custom/down_db.png') no-repeat center center;
+}
+/**角色管理**/
+.icon-custom-role
+{
+    background:url('icons/custom/collaboration.png') no-repeat center center;
+}
+.icon-custom-operarecord
+{
+    background:url('icons/custom/old-versions.png') no-repeat center center;
+}
+
+/**重置密码**/
+.icon-custom-resetpwd
+{
+    background:url('icons/custom/key_start.png') no-repeat center center;
+}
+.icon-custom-updatevip
+{
+    background:url('icons/custom/bestseller.png') no-repeat center center;
+}
+.icon-custom-qc
+{
+    background:url('icons/custom/issue.png') no-repeat center center;
+}
+/**清空**/
+.icon-custom-allclear
+{
+    background:url('icons/custom/allclear.png') no-repeat center center;
+}
+/**清空**/
+.icon-custom-rubbish
+{
+    background:url('icons/custom/deleteinfo.png') no-repeat center center;
+}
+.icon-custom-excel
+{
+    background:url('icons/custom/excel.png') no-repeat center center;
+}
+.icon-custom-outstore
+{
+    background:url('icons/custom/outstore.png') no-repeat center center;
+}
+.icon-custom-quitstore
+{
+    background:url('icons/custom/quitstore.png') no-repeat center center;
+}
+.icon-custom-mixstore
+{
+    background:url('icons/custom/mixstore.png') no-repeat center center;
+}
+.icon-custom-instore
+{
+    background:url('icons/custom/instore.png') no-repeat center center;
+}
+.icon-custom-wl
+{
+    background:url('icons/custom/product.png') no-repeat center center;
+}
+.icon-custom-querylog
+{
+    background:url('icons/custom/query_log.png') no-repeat center center;
+}
+.icon-custom-querytrac
+{
+    background:url('icons/custom/query_log.png') no-repeat center center;
+}
+.icon-custom-querytrac
+{
+    background:url('icons/custom/query_trce.png') no-repeat center center;
+}
+.icon-custom-queryorder
+{
+    background:url('icons/custom/query_order.png') no-repeat center center;
+}
+.icon-custom-queryboxcase
+{
+    background:url('icons/custom/query_boxcase.png') no-repeat center center;
+}
+.icon-custom-queryalglog
+{
+    background:url('icons/custom/query_alglog.png') no-repeat center center;
+}
+.icon-custom-zhijian
+{
+    background:url('icons/custom/product-design.png') no-repeat center center;
+}
+.icon-custom-down
+{
+    background:url('icons/custom/down.png') no-repeat center center;
+}
+.icon-custom-upgrade
+{
+    background:url('icons/custom/upgrade.png') no-repeat center center;
+}
+.icon-custom-businessauthorize
+{
+    background:url('icons/custom/businessauthorize.png') no-repeat center center;
+}
+.icon-custom-qrcard
+{
+    background:url('icons/custom/qrcard.png') no-repeat center center;
+}
+.icon-custom-companyAward
+{
+    background:url('icons/custom/companyAward.png') no-repeat center center;
+}
+.icon-custom-productqc
+{
+    background:url('icons/custom/productqc.png') no-repeat center center;
+}
+.icon-custom-400
+{
+    background:url('icons/custom/400.png') no-repeat center center;
+}
+.icon-custom-sms
+{
+    background:url('icons/custom/sms.png') no-repeat center center;
+}
+.icon-custom-productbarcode
+{
+    background:url('icons/custom/productbarcode.png') no-repeat center center;
+}
+.icon-custom-miweb
+{
+    background:url('icons/custom/miweb.png') no-repeat center center;
+}
+
+.icon-custom-ico-awards
+{
+    background:url('icons/custom/code_ico_awards.png') no-repeat center center;
+}
+
+.icon-custom-ico-fangwei
+{
+    background:url('icons/custom/code_ico_fangwei.png') no-repeat center center;
+}
+
+.icon-custom-ico-wuliu
+{
+    background:url('icons/custom/code_ico_wuliu.png') no-repeat center center;
+}
+
+.icon-custom-ico-jifen
+{
+    background:url('icons/custom/code_ico_jifen.png') no-repeat center center;
+}
+
+.icon-custom-ico-suyuan
+{
+    background:url('icons/custom/code_ico_suyuan.png') no-repeat center center;
+}
+.icon-custom-score {
+background: url('icons/custom/score.png') no-repeat center center;
+}
+.icon-custom-shopset {
+background: url('icons/custom/basket.png') no-repeat center center;
+}
+.icon-custom-singleorder {
+background: url('icons/custom/singleorder.png') no-repeat center center;
+}
+.icon-custom-attibutes
+{
+    background:url('icons/custom/attibutes.png') no-repeat center center;
+}
+.icon-custom-scoredetail
+{
+    background:url('icons/custom/calendar.png') no-repeat center center;
+}
+.icon-custom_shopping
+{
+    background:url('icons/custom/custom_shopping.png') no-repeat center center;
+}
+.icon-custom_queryexpress
+{
+    background:url('icons/custom/shipping.png') no-repeat center center;
+}
+.icon-custom_testreport
+{`
+    background:url('icons/custom/library.png') no-repeat center center;
+}
+.icon-custom-database{
+	background:url('icons/custom/database.png') no-repeat center center
+}
+.icon-custom-category{
+    background:url('icons/custom/category.png') no-repeat center center
+}
+.icon-custom-sitemap{
+    background:url('icons/custom/sitemap.png') no-repeat center center
+}
+.icon-custom-organiztion{
+	background:url('icons/custom/organization16.png') no-repeat center center
+}
+.icon-custom-companyposition{
+     background:url('icons/custom/companyposition16.png')
+}
+.icon-custom-menlei{
+	background:url('icons/custom/menlei16.png') no-repeat center center
+}
+.icon-custom-workflow24{
+	background:url('icons/custom/workflow24.png') no-repeat center center
+}
+/*
+*参考：http://www.easyicon.net/iconsearch/iconset:essen-icons/2/
+**/
+.icon-custom-config_tool_16{
+	background:url('icons/archive8/config_tool_16.png') no-repeat center center
+}
+.icon-custom-sign_out_exit_16{
+	background:url('icons/archive8/future_projects_16.png') no-repeat center center
+}
+.icon-custom-special_offer_16{
+	background:url('icons/archive8/special_offer_16.png') no-repeat center center
+}
+.icon-custom-folder_16{
+	background:url('icons/archive8/folder_16.png') no-repeat center center
+}
+.icon-custom-finished_work_16{
+	background:url('icons/archive8/finished_work_16.png') no-repeat center center
+}
+.icon-custom-statistics_16{
+	background:url('icons/archive8/statistics_16.png') no-repeat center center
+}
+.icon-custom-user_16{
+	background:url('icons/archive8/user_16.png') no-repeat center center
+}
+.icon-custom-news_paper_16{
+	background:url('icons/archive8/news_paper_16.png') no-repeat center center
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

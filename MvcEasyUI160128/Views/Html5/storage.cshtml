@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>storage</title>
+	<script src="~/Scripts/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<script>
+		$(function () {
+			loc = window.localStorage;
+			loc.a = "2016年localstorage";
+			loc.setItem("aa", "123456789");
+			$('#local').text(loc.a);
+			//$('#local').append("<br/>");
+			//$('#local').append(loc.aa);
+			//for (var i = 0; i < loc.length; i++) {
+			//	//key(i)获得相应的键，再用getItem()方法获得对应的值
+			//	document.write(loc.key(i) + " : " + loc.getItem(loc.key(i)) + "<br>");
+			//}
+			$('#local').append("<br/>");
+			loc.removeItem("aa");
+			$('#local').append(loc.getItem("aa"));
+			sessi = window.sessionStorage;
+			sessi.a = "2016年sessionstorage";
+			$('#sess').text(sessi.a);
+		})
+	</script>
+    <div class="container">
+		<h3>Local Session Storage 测试</h3>
+		<div id="local"></div>
+		<div id="sess"></div>
+    </div>
+</body>
+</html>

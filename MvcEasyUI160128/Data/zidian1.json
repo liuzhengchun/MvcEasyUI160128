@@ -1,0 +1,7 @@
+{"total":10,"rows":[
+	{"uname":"admin","department":"技术部","position":"技术总管","isrole":"Administrator","isuse":true,"description":"管理员"},
+	{"uname":"user01","department":"技术部","position":"技术员","isrole":"Administrator","isuse":true,"description":"一般用户"},
+	{"uname":"user02","department":"技术部","position":"技术员","isrole":"Administrator","isuse":true,"description":"一般用户"},
+	{"uname":"user03","department":"技术部","position":"技术员","isrole":"Administrator","isuse":true,"description":"一般用户"},
+	{"uname":"user04","department":"技术部","position":"技术员","isrole":"Administrator","isuse":true,"description":"一般用户"}
+]}

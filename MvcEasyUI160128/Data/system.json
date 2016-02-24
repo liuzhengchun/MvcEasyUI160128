@@ -1,0 +1,118 @@
+[{
+	"id":1,   
+	"text":"全宗管理",   
+	"iconCls":"icon-custom-home", 
+	"attributes":{   
+						"url":"/ArchiveManage/QuanZhong"
+					}
+},{
+	"id":2,   
+	"text":"分类管理",   
+	"iconCls":"icon-custom-queryboxcase", 
+	"attributes":{   
+						"url":"/ArchiveManage/FenLei"
+					}
+},{
+	"id":3,   
+	"text":"门类管理",   
+	"iconCls":"icon-custom-menlei", 
+	"attributes":{   
+						"url":"/ArchiveManage/MenLei"
+					}
+}
+,{
+	"id":4,   
+	"text":"用户管理",   
+	"iconCls":"icon-custom-user", 
+	"attributes":{   
+						"url":"../System/users.html"
+					}
+},{
+	"id":5,   
+	"text":"角色管理",   
+	"iconCls":"icon-custom-role", 
+	"attributes":{   
+						"url":"../System/roles.html"
+					}
+},{
+	"id":6,   
+	"text":"窗体模式",   
+	"iconCls":"icon-custom-score", 
+	"attributes":{   
+						"url":"welcome.html"
+					}
+},{
+	"id":61,   
+	"text":"工作流",   
+	"iconCls":"icon-custom-workflow24", 
+	"attributes":{   
+						"url":"../System/workflow.html"
+					}
+},{
+	"id":7,   
+	"text":"数据字典",   
+	"iconCls":"icon-custom-database", 
+	"attributes":{   
+						"url":"../System/zidian.html"
+					}
+}
+,{
+	"id":8,   
+	"text":"数据表定义",   
+	"iconCls":"icon-custom-excel", 
+	"attributes":{   
+						"url":"../System/shujubiao.html"
+					}
+}
+,{
+	"id":9,   
+	"text":"菜单设置",   
+	"iconCls":"icon-custom-category", 
+	"attributes":{   
+						"url":"../System/caidan.html"
+					}
+}
+,{
+	"id":10,   
+	"text":"系统参数",   
+	"iconCls":"icon-custom-systemset", 
+	"attributes":{   
+						"url":"../System/xitongparam.html"
+					}
+},{
+	"id":11,   
+	"text":"全文路径",   
+	"iconCls":"icon-custom-sitemap", 
+	"attributes":{   
+						"url":"../System/quanwen.html"
+					}
+},{
+	"id":14,   
+	"text":"部门人员",   
+	"iconCls":"icon-custom-customers", 
+	"attributes":{   
+						"url":"../System/renyuan.html"
+					}
+},{
+	"id":15,   
+	"text":"借阅管理",   
+	"iconCls":"icon-custom-cv", 
+	"attributes":{   
+						"url":"../System/jieyue.html"
+					}
+},{
+	"id":16,   
+	"text":"桌面管理",   
+	"iconCls":"icon-custom-preview", 
+	"attributes":{   
+						"url":"../System/zhumian.html"
+					}
+}
+,{
+	"id":17,   
+	"text":"操作日志",   
+	"iconCls":"icon-custom-News", 
+	"attributes":{   
+						"url":"../System/rizhi.html"
+					}
+}]

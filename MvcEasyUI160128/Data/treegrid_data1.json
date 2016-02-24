@@ -1,0 +1,72 @@
+[{
+	"id":1,
+	"pid":0,
+	"name":"C",
+	"size":"",
+	"date":"02/19/2010",
+	"children":[{
+		"id":2,
+		"pid":1,
+		"name":"Program Files",
+		"size":"120 MB",
+		"date":"03/20/2010",
+		"children":[{
+			"id":21,
+			"pid":2,
+			"name":"Java",
+			"size":"",
+			"date":"01/13/2010"
+		},{
+			"id":22,
+			"pid":2,
+			"name":"MySQL",
+			"size":"",
+			"date":"01/13/2010",
+			"state":"closed",
+			"children":[{
+				"id":221,
+				"pid":22,
+				"name":"my.ini",
+				"size":"10 KB",
+				"date":"02/26/2009"
+			},{
+				"id":222,
+				"pid":22,
+				"name":"my-huge.ini",
+				"size":"5 KB",
+				"date":"02/26/2009"
+			},{
+				"id":223,
+				"pid":22,
+				"name":"my-large.ini",
+				"size":"5 KB",
+				"date":"02/26/2009"
+			}]
+		}]
+	},{
+		"id":3,
+		"pid":1,
+		"name":"eclipse",
+		"size":"",
+		"date":"01/20/2010",
+		"children":[{
+			"id":31,
+			"pid":3,
+			"name":"eclipse.exe",
+			"size":"56 KB",
+			"date":"05/19/2009"
+		},{
+			"id":32,
+			"pid":3,
+			"name":"eclipse.ini",
+			"size":"1 KB",
+			"date":"04/20/2010"
+		},{
+			"id":33,
+			"pid":3,
+			"name":"notice.html",
+			"size":"7 KB",
+			"date":"03/17/2005"
+		}]
+	}]
+}]

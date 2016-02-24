@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+    </ul>
+    }
+}
+else
+{
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>*@
+	<ul class="nav navbar-nav navbar-right">
+		<li style="padding:10px 20px 0 0 ;">
+			<b class="sys_date"></b>
+		</li>
+		<li style="padding-top: 5px;">
+			<a href="javascript:void(0)" onclick="javascript:ShowAlterPasswordDialog()" title="系统信息">
+				<img border="0" src='@Url.Content("~/Content/Images/system_config_24.png")' title="系统信息" alt="系统信息" />
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" onclick="javascript:ShowAlterPasswordDialog()" title="修改用户密码">
+				<img border="0" src="@Url.Content("~/Content/Images/btn_hd_support.gif")" title="修改用户密码" alt="修改用户密码" />
+			</a>
+		</li>
+		<li>
+			<a href="#" onclick="addTab('在线帮助', 'userGuid.htm', 'icon icon-help')" title="在线帮助">
+				<img border="0" src="@Url.Content("~/Content/Images/btn_hd_help.gif")" title="在线帮助" alt="在线帮助" />
+			</a>
+		</li>
+		<li>
+			<a href="" onclick="LogOut()" title="注销"><b><img border="0" src="@Url.Content("~/Content/Images/btn_hd_exit.gif")" title="注销" alt="注销" /></b></a>
+		</li>
+	</ul>
+}

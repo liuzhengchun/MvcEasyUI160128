@@ -1,0 +1,253 @@
+﻿
+@{
+	Layout = null;
+}
+<script src="@Url.Content("~/Scripts/MyJs/advance.js")"></script>
+<div class="easyui-layout" style="width:100%;height:100%;">
+	<!--左操作栏目-->
+	<div data-options="region:'west',split:true" title="管理" style="width:247px;height:100%;">
+		<div id="myadvance" class="easyui-tabs" style="width:100%;height:100%;">
+			<div title="案卷管理" style="padding:10px">
+				<ul class="easyui-tree" id="load_archive" data-options="url:'LoadArchive',method:'get',animate:true,lines:true"></ul>
+			</div>
+			<div title="文档管理" style="padding:10px">
+				<ul class="easyui-tree" data-options="url:'LoadArchive',method:'get',animate:true,lines:true"></ul>
+			</div>
+			<div title="未归档管理" style="padding:10px">
+				<ul class="easyui-tree" data-options="url:'LoadArchive',method:'get',animate:true,lines:true"></ul>
+			</div>
+		</div><!--end easyui-tabs-->
+	</div><!--end easyui-west-->
+	<!--显示区域 begin easyui-center-->
+	<div data-options="region:'center',split:true,border:false" style="height:100%;">
+		<div class="easyui-layout" style="height:100%;" data-options="fit:true,border:false">
+			<div data-options="region:'north',title:'案卷/文件/内容',split:true,border:false,minHeight:30" style="height:180px;">
+				<table id="archives_dg" style="border-bottom:none;">
+					@Html.Raw(ViewBag.ArFileHeader)
+				</table>
+			</div>
+			<div data-options="region:'center',split:true,fit:true,border:false">
+				<div class="easyui-layout" data-options="fit:true,split:true,border:false">
+					<div data-options="region:'north',split:true,border:false" style="height:180px;">
+						<table id="files_dg"></table>
+					</div>
+					<div data-options="region:'center',split:true,fit:true,border:false">
+						<table id="filecontent_dg">
+							@Html.Raw(ViewBag.FileContentDisplayItem)
+						</table>
+					</div>
+				</div><!--end sub sub easyui-layout-->
+			</div><!--end sub easyui-center-->
+		</div><!--end sub easyui-layout-->
+	</div><!--end easyui-center-->
+</div><!--end easyui-layout-->
+
+<!--弹出案卷对话框-->
+<div style="display: none;">
+	<div id="archive_form" class="easyui-dialog" style="width: 500px; height:420px;padding: 5px 10px" closable="false" closed="true" buttons=".archive-dlg-buttons" modal="true">
+			<div style="padding:10px 60px 20px 60px">
+				<form id="archive_ff" method="post">
+					@Html.Raw(ViewBag.ArchiveForm)
+				</form>
+			</div>
+    </div>
+</div>
+<!--弹出文件内容对话框-->
+@Html.Raw(ViewBag.FileContentFormList)
+
+<!--档案右键菜单-->
+<div id="myarchive_menu" class="easyui-menu" style="width:150px;">
+	<div onclick="ArchiveForm(1)">添加案卷</div>
+	<div onclick="ArchiveForm(2)">克隆新增</div>
+	<div onclick="ArchiveForm(3)">修改案卷</div>
+	<div onclick="ArchiveForm(4)">删除案卷</div>
+	<div>修改分类</div>
+	<div>引用数据</div>
+	<div class="menu-sep"></div>
+	<div>上移</div>
+	<div>下移</div>
+	<div>移至</div>
+	<div>重置大流水</div>
+	<div class="menu-sep"></div>
+	<div>提交</div>
+	<div>撤回提交</div>
+	<div class="menu-sep"></div>
+	<div>档案导入</div>
+	<div>全文导出</div>
+	<div class="menu-sep"></div>
+</div>
+<!--文件右键菜单-->
+<div id="myfiles_menu" class="easyui-menu" style="width:150px;">
+	<div onclick="FilesForm(1)">添加文件</div>
+	<div onclick="FilesForm(2)">克隆文件</div>
+	<div onclick="FilesForm(3)">修改文件</div>
+	<div onclick="">删除文件</div>
+	<div onclick="">引用数据</div>
+	<div onclick="">移出文件</div>
+	<div onclick="">解锁文件</div>
+	<div onclick="">锁定文件</div>
+	<div class="menu-sep"></div>
+	<div onclick="">复制</div>
+	<div onclick="">粘贴</div>
+	<div onclick="">提交</div>
+	<div onclick="">撤回</div>
+	<div data-options="iconCls:'icon-print',disabled:true">Print</div>
+	<div class="menu-sep"></div>
+	<div class="menu-sep"></div>
+	<div onclick="">上移</div>
+	<div onclick="">下移</div>
+	<div onclick="">移至</div>
+	<div onclick="">重置大流水</div>
+	<div class="menu-sep"></div>
+	<div>卷内导入</div>
+	<div>全文导出</div>
+	<div class="menu-sep"></div>
+</div>
+<!--内容右键菜单-->
+<div id="mycontent_menu" class="easyui-menu" style="width:150px;">
+	<div onclick="ContentForm()">扫描输入</div>
+	<div onclick="ContentForm()">挂接全文</div>
+	<div onclick="">删除全文</div>
+	<div onclick="ContentForm()">打开全文</div>
+	<div onclick="">水印全文</div>
+	<div onclick="">转黑白</div>
+	<div class="menu-sep"></div>
+	<div onclick="">文件合并</div>
+	<div onclick="">文件拆分</div>
+	<div onclick="">下载全文</div>
+	<div onclick="">全文预览</div>
+	<div onclick="">全文导入</div>
+	<div onclick="">撤回</div>
+	<div data-options="iconCls:'icon-print',disabled:true">Print</div>
+	<div class="menu-sep"></div>
+</div>
+
+<script src="http://www.jeasyui.com/easyui/datagrid-filter.js"></script>
+
+<!--Files测试表单-->
+<div style="display: none;">
+	<div id="FilesTest_form" class="easyui-dialog" style="width: 400px; height:300px; padding: 10px 10px 10px 10px" closed="true" closable="false" buttons="#MenLeiForm_Button" modal="true">
+		<form id="filestest_frm">
+			<table id="filestest" class="view">
+				<tr>
+					<th>
+						<label for="txt_ar_name">案卷：</label>
+					</th>
+					<td>
+						<input class="easyui-combobox" id="txt_ar_name" style="width:200px;"
+							   name="language"
+							   data-options="url:'/ArchiveManage/LoadArchive',
+							   method:'get',
+							   valueField:'id',
+							   textField:'text',
+							   panelHeight:'180px'">
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_ar_name">案卷(不能输入)：</label>
+					</th>
+					<td>
+						<input class="easyui-combobox" id="txt_ar_name2" style="width:200px;"
+							   name="language"
+							   data-options="url:'/ArchiveManage/LoadArchive',
+							   method:'get',
+							   valueField:'id',
+							   textField:'text',
+							   editable:false,
+							   panelHeight:'180px'">
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_ar_name">案卷(不能输入)：</label>
+					</th>
+					<td>
+						<input class="easyui-combobox" id="txt_ar_name3" style="width:200px;"
+							   name="language"
+							   data-options="url:'/ArchiveManage/LoadArchive',
+							   method:'get',
+							   valueField:'id',
+							   textField:'text',
+							   editable:false,
+							   panelHeight:'180px'">
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_c_number">文件名称：</label>
+					</th>
+					<td>
+						<input class="easyui-validatebox" type="text" id="txt_fr_name" maxlength="50" data-options="required:true,missingMessage:''" />
+					</td>
+				</tr>
+
+			</table>
+			<div id="FilesTest_Button">
+				<a href="javascript:void(0)" id="bnt_sumbit_filestest" class="easyui-linkbutton" iconcls="icon-ok">确认</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="FilesForm(4)">取消</a>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<!--FileContent测试表单-->
+<div style="display: none;">
+	<div id="FilesTest_form" class="easyui-dialog" style="width: 400px; height:300px; padding: 10px 10px 10px 10px" closed="true" closable="false" buttons="#MenLeiForm_Button" modal="true">
+		<form id="filestest_frm">
+			<table id="filestest" class="view">
+				<tr>
+					<th>
+						<label for="txt_file_arname">案卷：</label>
+					</th>
+					<td>
+						<input class="easyui-combobox" id="txt_file_arname"
+							   name="language"
+							   data-options="url:'/ArchiveManage/LoadArchive',
+							   method:'get',
+							   valueField:'id',
+							   textField:'text',
+							   panelHeight:'auto'">
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_file_name">文件名称：</label>
+					</th>
+					<td>
+						<input class="easyui-validatebox" type="text" id="txt_c_name" maxlength="50" data-options="required:true,missingMessage:'请填写文件名称'" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txt_file_size">文件大小：</label>
+					</th>
+					<td>
+						<input class="easyui-validatebox" type="text" id="txt_c_name" maxlength="50" data-options="required:true,missingMessage:'请填写文件大小'" />
+					</td>
+				</tr>
+			</table>
+			<div id="FilesTest_Button">
+				<a href="javascript:void(0)" id="bnt_sumbit_filestest" class="easyui-linkbutton" iconcls="icon-ok">确认</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="FilesForm(4)">取消</a>
+			</div>
+
+		</form>
+	</div>
+</div>
+<style>
+	.datagrid-wrap.panel-body.panel-body-noheader {
+		height: 500px;
+	}
+</style>
+
+<script>
+		$(function () {
+			$('.datagrid-wrap').each(function (index, obj) {
+				//$(this).S;
+			});
+		})
+</script>
+
+

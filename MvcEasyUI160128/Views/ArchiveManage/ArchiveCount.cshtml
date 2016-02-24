@@ -1,0 +1,117 @@
+﻿
+@{
+	Layout = null;
+	ViewBag.Title = "案卷分类统计";
+}
+<div class="easyui-panel" data-options="closable:false,
+               maximizable:true,border:false,fit:true" title="案卷分类" style="width:auto;height:100%;padding:10px;">
+   <div style="margin-left:8px;">
+	年份:
+   	<input id="year_id" class="easyui-numberspinner" style="width:100px;"
+			  required="required" value="2016" data-options="min:1971,max:2099,editable:false">
+	&nbsp;&nbsp;
+   	<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="GetYearData()">加载</a>
+   </div>
+   <div id="ar_count" style="width:820px;height:360px;"></div>
+</div>
+<script src="~/Scripts/echarts/echarts.common.min.js"></script>
+<script>
+        // 基于准备好的dom，初始化echarts实例
+	    var myChart = echarts.init(document.getElementById('ar_count'));
+	    //后台获取数据
+	    $.get("/ArchiveManage/ArCount", function (data) {
+	    	var arr = data.split(',');
+	    	// 指定图表的配置项和数据
+	    	var option = {
+	    		title: {
+	    			text: '案卷统计'
+	    		},
+	    		tooltip: {
+	    			trigger: 'axis'
+	    		},
+	    		toolbox: {
+	    			show: true,
+	    			feature: {
+	    				mark: { show: true },
+	    				dataView: { show: true, readOnly: false },
+	    				magicType: { show: true, type: ['line', 'bar'] },
+	    				restore: { show: true },
+	    				saveAsImage: { show: true }
+	    			}
+	    		},
+	    		calculable: true,
+	    		legend: {
+	    			data:['新建','归档']
+	    		},
+	    		xAxis: {
+	    			data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+	    		},
+	    		yAxis: [
+				  {
+        			type: 'value'
+				  }
+	    		],
+	    		series: [{
+	    			name: '新建',
+	    			type: 'bar',
+	    			data: arr
+	    		}, {
+	    			name: '归档',
+	    			type: 'bar',
+	    			data: arr
+	    		}]
+	    	};
+	    	// 使用刚指定的配置项和数据显示图表。
+	    	myChart.setOption(option);
+	    });
+	    function GetYearData() {
+	    	var year = $('#year_id').numberspinner('getValue');
+	    	$.get("/ArchiveManage/ArCount",{_year:year}, function (data) {
+	    		var arr = data.split(',');
+	    		// 指定图表的配置项和数据
+	    		var option = {
+	    			title: {
+	    				text: '案卷统计'
+	    			},
+	    			tooltip: {
+	    				trigger: 'axis'
+	    			},
+	    			toolbox: {
+	    				show: true,
+	    				feature: {
+	    					mark: { show: true },
+	    					dataView: { show: true, readOnly: false },
+	    					magicType: { show: true, type: ['line', 'bar'] },
+	    					restore: { show: true },
+	    					saveAsImage: { show: true }
+	    				}
+	    			},
+	    			calculable: true,
+	    			legend: {
+	    				data: ['新建', '归档']
+	    			},
+	    			xAxis: {
+	    				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+	    			},
+	    			yAxis: [
+					  {
+					  	type: 'value'
+					  }
+	    			],
+	    			series: [{
+	    				name: '新建',
+	    				type: 'bar',
+	    				data: arr
+	    			}, {
+	    				name: '归档',
+	    				type: 'bar',
+	    				data: arr
+	    			}]
+	    		};
+	    		// 使用刚指定的配置项和数据显示图表。
+	    		myChart.setOption(option);
+	    	});
+	    }
+
+       
+</script>

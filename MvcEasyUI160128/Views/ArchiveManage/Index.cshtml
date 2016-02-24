@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "档案管理主页";
+}
+@section css{
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/mysite.css")">
+}
+<!--头部-->
+<div data-options="region:'north',border:false" id="header" style="background-image:@Url.Content("~/Content/Images/world-map.png");height:40px;width:100%;background-repeat:no-repeat;background-attachment: fixed; background-color:#2963CF">
+	<ul class="button">
+		<li style="padding:10px 20px 0 0 ;">
+			<b class="sys_date"></b>
+		</li>
+		<li style="padding-top: 5px;">
+			<a href="javascript:void(0)" onclick="javascript:ShowAlterPasswordDialog()" title="系统信息">
+				<img border="0" src="@Url.Content("~/Content/Images/system_config_24.png")" title="系统信息" alt="系统信息" />
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" onclick="javascript:ShowAlterPasswordDialog()" title="修改用户密码">
+				<img border="0" src="@Url.Content("~/Content/Images/btn_hd_support.gif")" title="修改用户密码" alt="修改用户密码" />
+			</a>
+		</li>
+		<li>
+			<a href="#" onclick="addTab('在线帮助', 'userGuid.htm', 'icon icon-help')" title="在线帮助">
+				<img border="0" src="@Url.Content("~/Content/Images/btn_hd_help.gif")" title="在线帮助" alt="在线帮助" />
+			</a>
+		</li>
+		<li>
+			<a href="" onclick="LogOut()" title="注销"><b>
+				<img border="0" src="@Url.Content("~/Content/Images/btn_hd_exit.gif")" title="注销" alt="注销" /></b>
+			</a>
+		</li>
+	</ul>
+</div>
+<!--菜单-->
+<div data-options="region:'west',title:'功能菜单',split:true,border:false" id="left_menu" style="width:210px;">
+	<div class="easyui-accordion qa-tree-accordion" data-options="fit:true,animate:true">
+		<div title="系统管理" data-options="iconCls:'icon-custom-config_tool_16',selected:true" style="overflow:auto;padding:9px;">
+			<ul class="easyui-tree qa-tree-node" data-options="url:'@Url.Content("~/Data/system.json")',method:'get'" id="system"></ul>
+		</div>
+		<div title="预立卷" data-options="iconCls:'icon-custom-sign_out_exit_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'@Url.Content("~/Data/advance.json")',method:'get',animate:true,dnd:true" id="advance"></ul>
+		</div>
+		<div title="待审批" data-options="iconCls:'icon-custom-special_offer_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'#',method:'get',animate:true" id="wait"></ul>
+		</div>
+		<div title="档案管理" data-options="iconCls:'icon-custom-folder_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'#',method:'get',animate:true" id="archive"></ul>
+		</div>
+		<div title="档案利用" data-options="iconCls:'icon-custom-finished_work_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'#',method:'get',animate:true" id="archiveuse"></ul>
+		</div>
+		<div title="新闻管理" data-options="iconCls:'icon-custom-news_paper_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'#',method:'get',animate:true" id="newsmanage"></ul>
+		</div>
+		<div title="统计中心" data-options="iconCls:'icon-custom-statistics_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'@Url.Content("~/Data/total.json")',method:'get',animate:true" id="dataCount"></ul>
+		</div>
+		<div title="个人中心" data-options="iconCls:'icon-custom-user_16',selected:false" style="overflow:auto;padding:10px;">
+			<ul class="easyui-tree qa-tree-folder" data-options="url:'#',method:'get',animate:true" id="person"></ul>
+		</div>
+		<div title="" data-options="iconCls:'icon-custom-systemset',selected:true" style="overflow:auto;">
+		</div>
+	</div>
+</div>
+<!--显示区域-->
+<div data-options="region:'center',iconCls:'icon-ok',border:false">
+	<div class="easyui-tabs" id="Admin_mytab" fit="true" border="false">
+
+	</div>
+</div>
+<!--页尾-->
+<div data-options="region:'south',border:false" style="height: 25px; background: #E0ECFF;line-height: 25px; text-align: center; font-family: verdana;">
+	Copyright © 2011-2016 版权所有
+</div>
+<!--修改密码弹出框-->
+<div style="display: none;">
+	<div id="AlterPwdForm" class="easyui-dialog" style="width: 400px; height:200px;
+            padding: 5px 10px" closable="false" closed="true" buttons="#alterpwd-dlg-buttons"
+		 modal="true">
+		<table>
+			<tr>
+				<td class="custom_td">
+					<span class="input-group-addon">原始密码：</span>
+				</td>
+				<td>
+					<input id="txt_old" maxlength="50" type="password" style="width: 270px;" class="form-control" />
+				</td>
+			</tr>
+			<tr>
+				<td class="custom_td">
+					<span class="input-group-addon">新设密码：</span>
+				</td>
+				<td>
+					<input id="txt_new" maxlength="50" type="password" style="width: 270px;" class="form-control" />
+				</td>
+			</tr>
+			<tr>
+				<td class="custom_td">
+					<span class="input-group-addon">重复一次：</span>
+				</td>
+				<td>
+					<input id="txt_rep" maxlength="50" type="password" style="width: 270px;" class="form-control" />
+				</td>
+			</tr>
+		</table>
+		<div id="alterpwd-dlg-buttons">
+			<a href="javascript:void(0)" onclick="AlertPwd()" class="easyui-linkbutton" iconcls="icon-ok">确认</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript: $('#AlterPwdForm').dialog('close')">取消</a>
+		</div>
+	</div>
+</div>
+@section scripts{
+    <script src="@Url.Content("~/Scripts/MyJs/global.js")"></script>
+    <script src="@Url.Content("~/Scripts/MyJs/easyuiExtension.js")"></script>
+}
+
+	
+

@@ -1,0 +1,96 @@
+﻿@model MvcEasyUI160128.Models.Fonds
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Fonds</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Level)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Level)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Father)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Father)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Code)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Code)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Order)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Order)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_JGH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_JGH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_JGMLH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_JGMLH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fonds_Remark)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fonds_Remark)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
